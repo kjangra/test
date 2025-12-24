@@ -1,0 +1,64 @@
+/**
+ * Dark Theme
+ * Modern and sleek dark mode
+ */
+:root {
+    /* Primary Colors */
+    --primary-color: #4a9eff;
+    --primary-hover: #357abd;
+    --primary-light: #6bb0ff;
+    --primary-dark: #2d5f8f;
+    
+    /* Secondary Colors */
+    --secondary-color: #4caf50;
+    --secondary-hover: #45a049;
+    
+    /* Background Colors */
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --bg-dark: #121212;
+    
+    /* Text Colors */
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-light: #808080;
+    --text-inverse: #1e1e1e;
+    
+    /* Accent Colors */
+    --accent-color: #4a9eff;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --warning-color: #ff9800;
+    --info-color: #2196f3;
+    
+    /* Border & Shadow */
+    --border-color: #404040;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #4a9eff 0%, #4caf50 100%);
+}
+
+/* Dark theme specific adjustments */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.header {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer {
+    background-color: var(--bg-dark);
+}
+
+.card, .service-card, .testimonial-card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+

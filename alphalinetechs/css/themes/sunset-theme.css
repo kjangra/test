@@ -1,0 +1,62 @@
+/**
+ * Sunset Theme - Orange/Red
+ * Warm and energetic
+ */
+:root {
+    /* Primary Colors */
+    --primary-color: #f57c00;
+    --primary-hover: #e65100;
+    --primary-light: #ff9800;
+    --primary-dark: #e65100;
+    
+    /* Secondary Colors */
+    --secondary-color: #ff6f00;
+    --secondary-hover: #e65100;
+    
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fff8f0;
+    --bg-dark: #bf360c;
+    
+    /* Text Colors */
+    --text-primary: #3e2723;
+    --text-secondary: #6d4c41;
+    --text-light: #8d6e63;
+    --text-inverse: #ffffff;
+    
+    /* Accent Colors */
+    --accent-color: #ff9800;
+    --success-color: #4caf50;
+    --error-color: #d32f2f;
+    --warning-color: #f57c00;
+    --info-color: #0288d1;
+    
+    /* Border & Shadow */
+    --border-color: #ffe0b2;
+    --shadow-sm: 0 2px 4px rgba(245, 124, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(245, 124, 0, 0.15);
+    --shadow-lg: 0 8px 16px rgba(245, 124, 0, 0.2);
+    
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #ff6f00 0%, #f57c00 100%);
+    --gradient-secondary: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+}
+
+/* Sunset theme specific styles */
+.hero {
+    background: var(--gradient-primary);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--text-inverse);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.page-header {
+    background: var(--gradient-primary);
+}
+

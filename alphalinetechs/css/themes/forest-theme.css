@@ -1,0 +1,57 @@
+/**
+ * Forest Theme - Green
+ * Natural and growth-oriented
+ */
+:root {
+    /* Primary Colors */
+    --primary-color: #2e7d32;
+    --primary-hover: #1b5e20;
+    --primary-light: #4caf50;
+    --primary-dark: #1b5e20;
+    
+    /* Secondary Colors */
+    --secondary-color: #66bb6a;
+    --secondary-hover: #4caf50;
+    
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f1f8f4;
+    --bg-dark: #1b5e20;
+    
+    /* Text Colors */
+    --text-primary: #2e2e2e;
+    --text-secondary: #5a5a5a;
+    --text-light: #8a8a8a;
+    --text-inverse: #ffffff;
+    
+    /* Accent Colors */
+    --accent-color: #4caf50;
+    --success-color: #2e7d32;
+    --error-color: #d32f2f;
+    --warning-color: #f57c00;
+    --info-color: #1976d2;
+    
+    /* Border & Shadow */
+    --border-color: #c8e6c9;
+    --shadow-sm: 0 2px 4px rgba(46, 125, 50, 0.1);
+    --shadow-md: 0 4px 8px rgba(46, 125, 50, 0.15);
+    --shadow-lg: 0 8px 16px rgba(46, 125, 50, 0.2);
+    
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%);
+    --gradient-secondary: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+}
+
+/* Forest theme specific styles */
+.hero {
+    background: var(--gradient-primary);
+}
+
+.service-card:hover {
+    border-color: var(--primary-color);
+}
+
+.stat-number {
+    color: var(--primary-color);
+}
+
