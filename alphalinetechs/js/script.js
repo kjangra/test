@@ -1,8 +1,27 @@
-// Load configuration and utilities first
-// Note: In production, these should be loaded in order or bundled
-// For now, we'll keep the old code but refactored
+/**
+ * Modern AlphaLine Techs Application
+ * Backward compatible script loader
+ */
 
-// Mobile Menu Toggle - Refactored
+// Load modern app.js if available, otherwise use legacy code
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Try to load modern app.js
+        const script = document.createElement('script');
+        script.src = 'js/app.js';
+        script.type = 'module';
+        script.onerror = () => {
+            // Fallback to legacy code below
+            initLegacyCode();
+        };
+        document.head.appendChild(script);
+    });
+} else {
+    initLegacyCode();
+}
+
+function initLegacyCode() {
+// Legacy code for backward compatibility
 (function() {
     'use strict';
 
@@ -54,45 +73,80 @@
     });
 })();
 
-// FAQ Accordion - Refactored
+// FAQ Accordion - Fixed and Enhanced
 (function() {
     'use strict';
 
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        if (!question) return;
+    function initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        if (faqItems.length === 0) {
+            // Retry after a short delay if FAQ items aren't loaded yet
+            setTimeout(initFAQ, 100);
+            return;
+        }
+        
+        faqItems.forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            if (!question) return;
 
-        question.setAttribute('tabindex', '0');
-        question.setAttribute('role', 'button');
-        question.setAttribute('aria-expanded', 'false');
-
-        const toggleFAQ = () => {
-            const isActive = item.classList.contains('active');
+            // Set accessibility attributes
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('role', 'button');
+            question.setAttribute('aria-expanded', 'false');
+            question.setAttribute('aria-controls', `faq-answer-${index}`);
             
-            // Close all FAQ items
-            faqItems.forEach(faqItem => {
-                faqItem.classList.remove('active');
-                const q = faqItem.querySelector('.faq-question');
-                if (q) q.setAttribute('aria-expanded', 'false');
+            const answer = item.querySelector('.faq-answer');
+            if (answer) {
+                answer.setAttribute('id', `faq-answer-${index}`);
+            }
+
+            // Skip if already initialized to prevent duplicate listeners
+            if (question.dataset.faqInitialized === 'true') return;
+            question.dataset.faqInitialized = 'true';
+
+            const toggleFAQ = (e) => {
+                // Prevent event bubbling
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                    const q = faqItem.querySelector('.faq-question');
+                    if (q) {
+                        q.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                    question.setAttribute('aria-expanded', 'true');
+                }
+            };
+            
+            // Add event listeners directly (no cloning to preserve listeners)
+            question.addEventListener('click', toggleFAQ, { passive: false });
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFAQ(e);
+                }
             });
-            
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                item.classList.add('active');
-                question.setAttribute('aria-expanded', 'true');
-            }
-        };
-
-        question.addEventListener('click', toggleFAQ);
-        question.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleFAQ();
-            }
         });
-    });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFAQ);
+    } else {
+        initFAQ();
+    }
 })();
 
 // Contact Form Handling - Refactored
@@ -266,3 +320,4 @@
         }
     });
 })();
+} // End of initLegacyCode function

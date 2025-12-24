@@ -1,5 +1,5 @@
 // Site Configuration
-const SITE_CONFIG = {
+window.SITE_CONFIG = window.SITE_CONFIG || {
     companyName: 'AlphaLine Techs',
     email: 'sales@alphalinetechs.com',
     phone: '01234567890',
